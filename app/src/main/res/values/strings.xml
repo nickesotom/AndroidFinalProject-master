@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Android Final Project</string>
+    <string name="water">Water</string>
+    <string name="sleep">Sleep</string>
+    <string name="food">Food</string>
+    <string name="title_activity_water">WaterActivity</string>
+    <string name="fill_water">Add Water</string>
+    <string name="water_tap_text">Water Tap</string>
+    <string name="sleep_text">Sleep</string>
+    <string name="recipe_view">Time to eat</string>
+    <string name="ok_text">ok</string>
+    <string name="add_waterText">add water</string>
+    <string name="_8_ozText">8 oz</string>
+    <string name="_12_ozText">12 oz</string>
+    <string name="_16_9_ozText">16.9 oz</string>
+</resources>
