@@ -19,7 +19,6 @@
         <activity android:name=".WaterScreenActivity" />
         <activity android:name=".SleepScreenActivity" />
         <activity android:name=".FoodScreenActivity"></activity>
-        <activity android:name=".AddWaterScreenActivity"></activity>
     </application>
 
 </manifest>

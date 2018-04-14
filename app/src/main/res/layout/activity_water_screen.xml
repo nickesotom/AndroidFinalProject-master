@@ -10,15 +10,11 @@
 
     <Button
         android:id="@+id/fill_water_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:onClick="onClickAddWater"
+        android:layout_centerVertical="true"
         android:text="@string/fill_water" />
 
     <TextView
@@ -27,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="35sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/water_tap_text"
         android:textColor="#ffffff"
-        android:text="@string/water_tap_text" />
+        android:textSize="35sp" />
 </RelativeLayout>

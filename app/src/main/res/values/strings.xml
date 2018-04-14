@@ -13,4 +13,11 @@
     <string name="_8_ozText">8 oz</string>
     <string name="_12_ozText">12 oz</string>
     <string name="_16_9_ozText">16.9 oz</string>
+    <string-array name="waterValues">
+        <item>Water Amount In FL OZ…</item>
+        <item>8</item>
+        <item>12</item>
+        <item>16.9</item>
+        <item>24</item>
+    </string-array>
 </resources>
