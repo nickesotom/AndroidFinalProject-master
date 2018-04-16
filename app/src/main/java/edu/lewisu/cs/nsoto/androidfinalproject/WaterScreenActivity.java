@@ -8,14 +8,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class WaterScreenActivity extends AppCompatActivity {
 	Button mAddWater;
-	private double currentWater = 0.0;
-	private double maxWater = 64.0;
-	private String[] waterLevels = new String [4];
+	TextView waterAmount;
+	ProgressBar mProgressBar;
+
+	private int consumedWater = 0;
+	final int PROGRESS_BAR_INCREMENT = consumedWater;
+	private int currentWater = 0;
+	private int maxWater = 70;
+	private int waterScore = 0;
+	Spinner mSpinner;
+
 	WaterHelper mWater = new WaterHelper(currentWater, maxWater);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,28 +32,23 @@ public class WaterScreenActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_water_screen);
 
 		mAddWater = (Button) findViewById(R.id.fill_water_button);
+		waterAmount = (TextView) findViewById(R.id.water_consumed);
+		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
 		mAddWater.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				AlertDialog.Builder mBuilder = new AlertDialog.Builder(WaterScreenActivity.this);
-				int addingToArray = 0;
 
 				View mView = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
 
 				mBuilder.setTitle("Specify an amount of water");
-
-
-				for(int i = 0; i < waterLevels.length; i++) {
-					addingToArray++;
-					waterLevels[i] = "" + addingToArray;
-				}
-				final Spinner mSpinner = (Spinner) mView.findViewById(R.id.spinner);
-				//final int selection = Integer.parseInt(mSpinner.getSelectedItem().toString());
+				mSpinner = (Spinner) mView.findViewById(R.id.spinner);
 				ArrayAdapter<String> waterAmounts = new ArrayAdapter<String>(WaterScreenActivity.this,
 						android.R.layout.simple_spinner_item,
 						getResources().getStringArray(R.array.waterValues));
 
-				//waterAmounts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				waterAmounts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 				mSpinner.setAdapter(waterAmounts);
 
@@ -53,9 +57,9 @@ public class WaterScreenActivity extends AppCompatActivity {
 				mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Water Amount In FL OZ…")) {
+						if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Enter a water amount…")) {
 							Toast.makeText(WaterScreenActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-							Log.d("app", "value:" +waterLevels);
+							addingWater();
 							dialog.dismiss();
 						}
 					}
@@ -74,6 +78,40 @@ public class WaterScreenActivity extends AppCompatActivity {
 			}
 		});
 	}
+	private void addingWater() {
+		if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("8 fl oz.")) {
+			consumedWater = consumedWater + 8;
+			mProgressBar.incrementProgressBy(consumedWater);
+			waterScore = waterScore + consumedWater;
+			waterAmount.setText(waterScore + "/"+ maxWater);
+			consumedWater = 0;
+			Log.d("consumed", "consumed value:" +consumedWater);
+		}
+		else if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("12 fl oz.")) {
+			consumedWater = consumedWater + 12;
+			mProgressBar.incrementProgressBy(consumedWater);
+			waterScore = waterScore + consumedWater;
+			waterAmount.setText(waterScore + "/"+ maxWater);
+			consumedWater = 0;
+			Log.d("consumed", "consumed value:" +consumedWater);
+		}
+		else if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("18 fl oz.")) {
+			consumedWater = consumedWater + 18;
+			mProgressBar.incrementProgressBy(consumedWater);
+			waterScore = waterScore + consumedWater;
+			waterAmount.setText(waterScore + "/"+ maxWater);
+			consumedWater = 0;
+			Log.d("consumed", "consumed value:" +consumedWater);
+		}
+		else if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("24 fl oz.")) {
+			consumedWater = consumedWater + 24;
+			mProgressBar.incrementProgressBy(consumedWater);
+			waterScore = waterScore + consumedWater;
+			waterAmount.setText(waterScore + "/"+ maxWater);
+			consumedWater = 0;
+			Log.d("consumed", "consumed value:" +consumedWater);
+		}
+	}
 
 
 	/**
@@ -81,27 +119,27 @@ public class WaterScreenActivity extends AppCompatActivity {
 	 */
 
 	public static class WaterHelper {
-		double currentWater = 0;
-		double maxWater = 0;
+		int currentWater = 0;
+		int maxWater = 0;
 
-		public WaterHelper(double currentWater, double maxWater) {
+		public WaterHelper(int currentWater, int maxWater) {
 			this.currentWater = currentWater;
 			this.maxWater = maxWater;
 		}
 
-		public double getCurrentWater() {
+		public int getCurrentWater() {
 			return currentWater;
 		}
 
-		public void setCurrentWater(double currentWater) {
+		public void setCurrentWater(int currentWater) {
 			this.currentWater = currentWater;
 		}
 
-		public double getMaxWater() {
+		public int getMaxWater() {
 			return maxWater;
 		}
 
-		public void setMaxWater(double maxWater) {
+		public void setMaxWater(int maxWater) {
 			this.maxWater = maxWater;
 		}
 	}
