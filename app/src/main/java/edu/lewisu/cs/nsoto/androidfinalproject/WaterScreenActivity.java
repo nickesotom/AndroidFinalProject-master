@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,13 +18,14 @@ public class WaterScreenActivity extends AppCompatActivity {
 	Button mAddWater;
 	TextView waterAmount;
 	ProgressBar mProgressBar;
+	EditText mEditText;
+	Spinner mSpinner;
 
 	private int consumedWater = 0;
 	final int PROGRESS_BAR_INCREMENT = consumedWater;
 	private int currentWater = 0;
 	private int maxWater = 70;
 	private int waterScore = 0;
-	Spinner mSpinner;
 
 	WaterHelper mWater = new WaterHelper(currentWater, maxWater);
 	@Override
@@ -41,27 +43,40 @@ public class WaterScreenActivity extends AppCompatActivity {
 				AlertDialog.Builder mBuilder = new AlertDialog.Builder(WaterScreenActivity.this);
 
 				View mView = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
+				mEditText = (EditText) mView.findViewById(R.id.edit_text);
 
 				mBuilder.setTitle("Specify an amount of water");
-				mSpinner = (Spinner) mView.findViewById(R.id.spinner);
-				ArrayAdapter<String> waterAmounts = new ArrayAdapter<String>(WaterScreenActivity.this,
+				//mSpinner = (Spinner) mView.findViewById(R.id.spinner);
+				/*ArrayAdapter<String> waterAmounts = new ArrayAdapter<String>(WaterScreenActivity.this,
 						android.R.layout.simple_spinner_item,
 						getResources().getStringArray(R.array.waterValues));
 
 				waterAmounts.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 				mSpinner.setAdapter(waterAmounts);
-
+				*/
 
 
 				mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Enter a water amount…")) {
-							Toast.makeText(WaterScreenActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+						String inputNumberText = mEditText.getText().toString();
+
+
+						/*if (!mSpinner.getSelectedItem().toString().equalsIgnoreCase("Enter a water amount…")) {
+							//Toast.makeText(WaterScreenActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 							addingWater();
 							dialog.dismiss();
+						}*/
+						try {
+							int finalInputValue = Integer.parseInt(inputNumberText);
+							addingWater(inputNumberText, finalInputValue);
+							Toast.makeText(WaterScreenActivity.this, "You have entered "+finalInputValue, Toast.LENGTH_SHORT).show();
 						}
+						catch (NumberFormatException e) {
+							//Toast.makeText(WaterScreenActivity.this, "", Toast.LENGTH_SHORT).show();
+						}
+						dialog.dismiss();
 					}
 				});
 
@@ -78,8 +93,14 @@ public class WaterScreenActivity extends AppCompatActivity {
 			}
 		});
 	}
-	private void addingWater() {
-		if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("8 fl oz.")) {
+	private void addingWater(String editText, int parsedValue) {
+		editText = mEditText.getText().toString();
+		parsedValue = Integer.parseInt(editText);
+		consumedWater = consumedWater + parsedValue;
+		mProgressBar.incrementProgressBy(consumedWater);
+		waterScore = waterScore + consumedWater;
+		waterAmount.setText(waterScore + "/" + maxWater);
+		/*if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("8 fl oz.")) {
 			consumedWater = consumedWater + 8;
 			mProgressBar.incrementProgressBy(consumedWater);
 			waterScore = waterScore + consumedWater;
@@ -110,6 +131,12 @@ public class WaterScreenActivity extends AppCompatActivity {
 			waterAmount.setText(waterScore + "/"+ maxWater);
 			consumedWater = 0;
 			Log.d("consumed", "consumed value:" +consumedWater);
+		}*/
+		if (waterScore == maxWater) {
+			Toast.makeText(this, "You have reached your water limit for the day. Good job!", Toast.LENGTH_LONG).show();
+		}
+		else if (waterScore > maxWater) {
+			Toast.makeText(this, "You've already reached your limit, slow down!", Toast.LENGTH_LONG).show();
 		}
 	}
 
