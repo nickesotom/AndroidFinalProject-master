@@ -70,8 +70,8 @@ public class WaterScreenActivity extends AppCompatActivity {
 						}*/
 						try {
 							int finalInputValue = Integer.parseInt(inputNumberText);
-							addingWater(inputNumberText, finalInputValue);
-							Toast.makeText(WaterScreenActivity.this, "You have entered "+finalInputValue, Toast.LENGTH_SHORT).show();
+							addingWater();
+							//Toast.makeText(WaterScreenActivity.this, "You have entered "+finalInputValue, Toast.LENGTH_SHORT).show();
 						}
 						catch (NumberFormatException e) {
 							//Toast.makeText(WaterScreenActivity.this, "", Toast.LENGTH_SHORT).show();
@@ -93,13 +93,17 @@ public class WaterScreenActivity extends AppCompatActivity {
 			}
 		});
 	}
-	private void addingWater(String editText, int parsedValue) {
+	private void addingWater() {
+		mProgressBar.setMax(maxWater);
+		String editText;
+		int parsedValue;
 		editText = mEditText.getText().toString();
 		parsedValue = Integer.parseInt(editText);
 		consumedWater = consumedWater + parsedValue;
 		mProgressBar.incrementProgressBy(consumedWater);
 		waterScore = waterScore + consumedWater;
 		waterAmount.setText(waterScore + "/" + maxWater);
+		consumedWater = 0;
 		/*if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("8 fl oz.")) {
 			consumedWater = consumedWater + 8;
 			mProgressBar.incrementProgressBy(consumedWater);
