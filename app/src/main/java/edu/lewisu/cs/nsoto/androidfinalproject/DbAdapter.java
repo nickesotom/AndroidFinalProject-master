@@ -7,6 +7,7 @@ import android.database.DatabaseErrorHandler;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by Nicolas Soto on 4/19/2018.
@@ -50,30 +51,50 @@ public class DbAdapter {
 	public Cursor fetchAllData() {
 		return mDb.query(DATABASE_TABLE, allCols, null, null,null,null,null);
 	}
+	public Cursor grabWater() throws SQLException {
+		Cursor mCursor = mDb.query(DATABASE_TABLE, allCols, TOTAL_CURRENT_WATER + "=0", null,
+				null, null, null, null);
+		if (mCursor != null) {
+			mCursor.moveToFirst();
+		}
+		return mCursor;
+	}
+	public Cursor grabProgress() throws SQLException {
+		Cursor mCursor = mDb.query(DATABASE_TABLE, allCols, PROGRESS_MADE + "=0",null,null,null,
+				null,null);
+		if (mCursor != null) {
+			mCursor.moveToFirst();
+		}
+		return mCursor;
+	}
+	public boolean updateWaterData(int consumedWater, int progressMade) {
+		ContentValues args = new ContentValues();
+		args.put(TOTAL_CURRENT_WATER, consumedWater);
+		args.put(PROGRESS_MADE, progressMade);
 
 
-
-
-
-
-
-
-
-
+		/* Not really sure what to put as the third argument. We don't have any rows
+			just a column. Not sure if I need a rowId
+		 */
+		return mDb.update(DATABASE_TABLE, args,??? , null);
+	}
 
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 
 		@Override
-		public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+		public void onCreate(SQLiteDatabase db) {
+			db.execSQL(DATABASE_CREATE);
 		}
 
 		public DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		}
 		@Override
-		public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+		public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+			Log.w("DatabaseHelper", "Upgrading database from version " + i + " to "
+					+ i1 + ", which will destroy all old data");
+			db.execSQL("DROP TABLE IF EXISTS notes");
+			onCreate(db);
 		}
 	}
 }
