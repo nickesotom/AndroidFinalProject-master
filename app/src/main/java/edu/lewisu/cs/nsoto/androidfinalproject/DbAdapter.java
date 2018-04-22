@@ -67,17 +67,16 @@ public class DbAdapter {
 		}
 		return mCursor;
 	}
-	public boolean updateWaterData(int consumedWater, int progressMade) {
+	/*public boolean updateWaterData(int consumedWater, int progressMade) {
 		ContentValues args = new ContentValues();
 		args.put(TOTAL_CURRENT_WATER, consumedWater);
 		args.put(PROGRESS_MADE, progressMade);
 
-
 		/* Not really sure what to put as the third argument. We don't have any rows
 			just a column. Not sure if I need a rowId
-		 */
+
 		return mDb.update(DATABASE_TABLE, args,??? , null);
-	}
+	}*/
 
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 
