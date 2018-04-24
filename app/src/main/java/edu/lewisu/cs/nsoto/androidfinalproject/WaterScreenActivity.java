@@ -24,7 +24,7 @@ public class WaterScreenActivity extends AppCompatActivity {
 	private int consumedWater = 0;
 	final int PROGRESS_BAR_INCREMENT = consumedWater;
 	private int currentWater = 0;
-	private int maxWater = 70;
+	private final int maxWater = 64;
 	private int waterScore = 0;
 
 	WaterHelper mWater = new WaterHelper(currentWater, maxWater);
@@ -137,10 +137,10 @@ public class WaterScreenActivity extends AppCompatActivity {
 			Log.d("consumed", "consumed value:" +consumedWater);
 		}*/
 		if (waterScore == maxWater) {
-			Toast.makeText(this, "You have reached your water limit for the day. Good job!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "You have reached your water limit for the day. Good job!", Toast.LENGTH_SHORT).show();
 		}
-		else if (waterScore > maxWater) {
-			Toast.makeText(this, "You've already reached your limit, slow down!", Toast.LENGTH_LONG).show();
+		if (waterScore > maxWater) {
+			Toast.makeText(this, "You've already reached your limit, slow down!", Toast.LENGTH_SHORT).show();
 		}
 	}
 

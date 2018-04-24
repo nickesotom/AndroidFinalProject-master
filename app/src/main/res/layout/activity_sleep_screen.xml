@@ -5,14 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_bedtime1_01"
-    tools:context="edu.lewisu.cs.nsoto.androidfinalproject.SleepScreenActivity"
-    android:alpha="0.3">
+    tools:context="edu.lewisu.cs.nsoto.androidfinalproject.SleepScreenActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <com.tomerrosenfeld.customanalogclockview.CustomAnalogClock
+        android:id="@+id/analog_clock"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:default_watchface="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        />
+
+    <Button
+        android:id="@+id/checklist"
+        android:text="@string/checklist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="TextView" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+
 </RelativeLayout>
