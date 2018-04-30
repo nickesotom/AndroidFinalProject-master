@@ -26,7 +26,10 @@ public class SleepScreenActivity extends AppCompatActivity {
 		customAnalogClock.setAutoUpdate(true);
 
 
-
+	}
+	public void onClickChecklist(View view) {
+		Intent toChecklist = new Intent(this, ChecklistActivity.class);
+		startActivity(toChecklist);
 	}
 }
 
