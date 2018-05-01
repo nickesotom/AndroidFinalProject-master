@@ -16,14 +16,21 @@
     -->
 
     <CheckBox
+        android:id="@+id/check_brush_teeth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/brush_teeth"
         />
     <CheckBox
+        android:id="@+id/check_drink_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/drink_water" />
+    <CheckBox
+        android:id="@+id/check_stretch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_stretch"/>
     <TextView
         android:id="@android:id/empty"
         android:layout_width="wrap_content"

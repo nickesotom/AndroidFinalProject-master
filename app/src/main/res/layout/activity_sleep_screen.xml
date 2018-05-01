@@ -16,6 +16,16 @@
         android:layout_alignParentBottom="true"
         />
 
+    <TextView
+        android:id="@+id/text_bedtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingTop="40dp"
+        android:text="@string/target_bedtime"
+        android:textColor="#FFFF"
+
+        android:textSize="40dp" />
     <Button
         android:id="@+id/checklist"
         android:text="@string/checklist"
@@ -25,6 +35,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true" />
+    <Button
+        android:id="@+id/bedtime_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bedtime_button"/>
 
 
 </RelativeLayout>
