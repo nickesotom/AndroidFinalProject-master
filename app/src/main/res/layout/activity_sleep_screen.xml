@@ -26,6 +26,7 @@
         android:textColor="#FFFF"
 
         android:textSize="40dp" />
+
     <Button
         android:id="@+id/checklist"
         android:text="@string/checklist"
@@ -40,6 +41,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bedtime_button"/>
+
+    <Button
+        android:id="@+id/display_bed_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checklist"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/checklist"
+        android:text="Display Bedtime" />
 
 
 </RelativeLayout>
