@@ -18,6 +18,7 @@
     <string name="checkbox_stretch">Stretch</string>
     <string name="bedtime_button">Set Bedtime</string>
     <string name="target_bedtime"></string>
+    <string name="display_bedtime_button">Display Bedtime</string>
     <string-array name="waterValues">
         <item>Enter a water amount…</item>
         <item>8 fl oz.</item>

@@ -49,7 +49,7 @@
         android:layout_alignLeft="@+id/checklist"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/checklist"
-        android:text="Display Bedtime" />
+        android:text="@string/display_bedtime_button" />
 
 
 </RelativeLayout>
