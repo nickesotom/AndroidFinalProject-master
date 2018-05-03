@@ -28,9 +28,9 @@ import org.w3c.dom.Text;
 
 public class SleepScreenActivity extends AppCompatActivity {
 
-	Button mShowDialog;
 	private String[] arraySpinnerHours = new String [12];
 	private String[] arraySpinnerMinutes = new String [60];
+	Button mShowDialog;
 	TextView targetBedTime;
 	Spinner mHourSpinner;
 	Spinner mMinSpinner;
@@ -43,6 +43,7 @@ public class SleepScreenActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_sleep_screen);
 		CustomAnalogClock customAnalogClock = (CustomAnalogClock) findViewById(R.id.analog_clock);
 		customAnalogClock.setAutoUpdate(true);
+
 
 		int humanCounterHours = 0;
 		int humanCounterMin = 0;
@@ -96,7 +97,7 @@ public class SleepScreenActivity extends AppCompatActivity {
 						Toast.makeText(SleepScreenActivity.this, mHourSpinner.getSelectedItem().toString() + ":" + mMinSpinner.getSelectedItem().toString() +
 								mDayNightSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 
-						//targetBedTime.setText(mHourSpinner.getSelectedItem().toString()+":"+mMinSpinner.getSelectedItem().toString()+ " " + mDayNightSpinner.getSelectedItem().toString());
+						targetBedTime.setText(mHourSpinner.getSelectedItem().toString()+":"+mMinSpinner.getSelectedItem().toString()+ " " + mDayNightSpinner.getSelectedItem().toString());
 						saveBedtime(mView);
 						dialog.dismiss();
 					}
