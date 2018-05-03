@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".WaterScreenActivity" />
         <activity android:name=".SleepScreenActivity" />
-        <activity android:name=".FoodScreenActivity"></activity>
+        <activity android:name=".FoodScreenActivity" />
+        <activity android:name=".ChecklistActivity"></activity>
     </application>
 
 </manifest>

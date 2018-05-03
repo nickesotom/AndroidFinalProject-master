@@ -18,8 +18,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEYWATER = "accumulatedWater";
     private static final String KEYMAXWATER = "maxWater";
 
-    public DBHandler(Context context)
-    {
+    public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
