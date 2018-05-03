@@ -16,6 +16,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private static final String KEYID = "ID";
     private static final String KEYWATER = "accumulatedWater";
+    private static final String KEYMAXWATER = "maxWater";
 
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -24,7 +25,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createWaterTable = "CREATE TABLE " + DB_TABLE + "(" +
-                KEYID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEYWATER + " REAL," + ")";
+                KEYID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEYWATER + " REAL," + KEYMAXWATER + " REAL" + ")";
         db.execSQL(createWaterTable);
     }
 
@@ -37,22 +38,23 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addWater(float waterAmount) {
+    public void addWater(WaterModel water) {
         SQLiteDatabase sdb = this.getWritableDatabase();
         ContentValues cvalues = new ContentValues();
-        cvalues.put(KEYWATER, waterAmount);
+        cvalues.put(KEYWATER, water.getCurrentWater());
+        cvalues.put(KEYMAXWATER, water.getMaxWater());
 
         sdb.insert(DB_TABLE, null, cvalues);
         sdb.close();
     }
 
-    public float getWaterAmount(int id) {
+    public WaterModel getWaterAmount(int id) {
         SQLiteDatabase sdb = this.getReadableDatabase();
-        Cursor cursor = sdb.query(DB_TABLE, new String[] { KEYID, KEYWATER }, KEYID + " =?",
+        Cursor cursor = sdb.query(DB_TABLE, new String[] { KEYID, KEYWATER, KEYMAXWATER }, KEYID + " =?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        float waterAmt = Float.parseFloat(cursor.getString(0));
+        WaterModel waterAmt = new WaterModel(Float.parseFloat(cursor.getString(1)), Float.parseFloat(cursor.getString(2)));
 
         sdb.close();
         cursor.close();
@@ -60,12 +62,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     }
 
-    public int updateWater(float waterAmt) {
+    public int updateWater(WaterModel water) {
         SQLiteDatabase sdb = this.getWritableDatabase();
         ContentValues cvalues = new ContentValues();
-        cvalues.put(KEYWATER, waterAmt);
+        cvalues.put(KEYWATER, water.getCurrentWater());
+        cvalues.put(KEYMAXWATER, water.getMaxWater());
 
-        sdb.close();
         return sdb.update(DB_TABLE, cvalues, KEYID + " =?",
                 new String[] {String.valueOf(1)});
     }
@@ -75,13 +77,6 @@ public class DBHandler extends SQLiteOpenHelper {
         sdb.delete(DB_TABLE, KEYID + " =?", new String[] {String.valueOf(1)});
         sdb.close();
     }
-
-
-
-
-
-
-
 
 
 

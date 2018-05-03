@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:\Projects\AndroidFinalProject-master\AndroidFinalProject.iml" filepath="D:\Projects\AndroidFinalProject-master\AndroidFinalProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidFinalProject-master.iml" filepath="$PROJECT_DIR$/AndroidFinalProject-master.iml" />
-      <module fileurl="file://C:\Users\Mlk08\Documents\Mobile Apps\AndroidFinalProject-master\AndroidFinalProject-master.iml" filepath="C:\Users\Mlk08\Documents\Mobile Apps\AndroidFinalProject-master\AndroidFinalProject-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Mlk08\Documents\Mobile Apps\AndroidFinalProject-master\app\app.iml" filepath="C:\Users\Mlk08\Documents\Mobile Apps\AndroidFinalProject-master\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.lewisu.cs.nsoto.androidfinalproject.WaterScreenActivity"
-    android:background="#54A4DE">
+    android:background="@color/waterBackground">
 
 
     <Button
         android:id="@+id/fill_water_button"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/water_consumed"
+        android:layout_centerHorizontal="true"
         android:text="@string/fill_water" />
 
     <TextView
@@ -25,8 +24,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/water_tap_text"
-        android:textColor="#ffffff"
+        android:textColor="@color/waterBlue"
         android:textSize="35sp" />
+
 
     <ProgressBar
         android:layout_width="match_parent"
@@ -37,6 +37,7 @@
         android:id="@+id/progress_bar"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:indeterminate="false" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/water_consumed"
-        android:textColor="#ffffff"
+        android:textColor="@color/waterBlue"
         android:textStyle="bold"
         android:textSize="25sp"
         android:text="@string/initial_water_amount"
