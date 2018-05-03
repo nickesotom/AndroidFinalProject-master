@@ -6,4 +6,6 @@
     <color name="lightGrey">#e5e6eb</color>
     <color name="charcoal">#666666</color>
     <color name="black">#000000</color>
+    <color name="waterBlue">#003182</color>
+    <color name="waterBackground">#54A4DE</color>
 </resources>
