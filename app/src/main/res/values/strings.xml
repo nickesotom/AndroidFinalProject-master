@@ -24,8 +24,10 @@
         <item>Enter a water amount…</item>
         <item>8 fl oz.</item>
         <item>12 fl oz.</item>
+        <item>16.9 fl oz.</item>
         <item>18 fl oz.</item>
         <item>24 fl oz.</item>
+        <item>1 L</item>
     </string-array>
     <string-array name="waterNums">
         <item>0</item>
