@@ -53,7 +53,7 @@ public class SleepScreenActivity extends AppCompatActivity {
 		}
 		for(int min = 0; min < 60; min++) {
 			humanCounterMin++;
-			if(humanCounterMin <= 9) {
+			if(humanCounterMin < 11) {
 				this.arraySpinnerMinutes[min] = "0"+min;
 			}
 			else {

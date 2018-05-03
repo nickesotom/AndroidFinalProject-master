@@ -14,22 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="onClickWater"
-        android:text="@string/water"
-        android:background="@drawable/water_button"/>
+        android:background="@drawable/bottledwater"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:onClick="OnClickSleep"
-        android:text="@string/sleep"
-        android:background="@drawable/sleep_button"/>
+        android:background="@drawable/bedtime"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/food"
         android:onClick="OnClickFood"
-        android:background="@drawable/food_button"/>
+        android:background="@drawable/food" />
 </TableLayout>
 
 

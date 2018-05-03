@@ -21,8 +21,8 @@
     <Spinner
         android:id="@+id/daynight_spinner"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp">
 
     </Spinner>
 </LinearLayout>
