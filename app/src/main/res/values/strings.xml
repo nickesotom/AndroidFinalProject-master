@@ -40,7 +40,6 @@
         <item>33.8</item>
     </string-array>
     <string-array name="AMPM">
-        <item>AM or PM...</item>
         <item>AM</item>
         <item>PM</item>
     </string-array>
