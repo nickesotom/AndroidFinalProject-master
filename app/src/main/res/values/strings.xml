@@ -5,7 +5,8 @@
     <string name="food">Food</string>
     <string name="title_activity_water">WaterActivity</string>
     <string name="fill_water">Add Water</string>
-    <string name="water_tap_text">Drink up bitches</string>
+    <string name="reset_water">Reset Water</string>
+    <string name="water_tap_text">Water Tap</string>
     <string name="sleep_text">Sleep</string>
     <string name="recipe_view">Time to eat</string>
     <string name="ok_text">OK</string>
