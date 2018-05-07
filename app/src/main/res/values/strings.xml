@@ -19,6 +19,11 @@
     <string name="bedtime_button">Set Bedtime</string>
     <string name="target_bedtime"></string>
     <string name="display_bedtime_button">Display Bedtime</string>
+    <string name="recipe1">Vegetarian Casserole</string>
+    <string name="description1">Heat the oil in a large, heavy-based pan. Add the onions and cook gently for 5 – 10 mins until softened.\r\nAdd the garlic, spices, dried thyme, carrots, celery and peppers and cook for 5 minutes.\r\nAdd the tomatoes, stock, courgettes and fresh thyme and cook for 20 - 25 minutes.\r\nTake out the thyme sprigs. Stir in the lentils and bring back to a simmer. Serve with wild and white basmati rice, mash or quinoa.</string>
+    <string name="recipe2">Spicy Arrabiata Penne</string>
+    <string name="description2">Bring a large pot of water to a boil. Add kosher salt to the boiling water, then add the pasta. Cook according to the package instructions, about 9 minutes.\r\nIn a large skillet over medium-high heat, add the olive oil and heat until the oil starts to shimmer. Add the garlic and cook, stirring, until fragrant, 1 to 2 minutes. Add the chopped tomatoes, red chile flakes, Italian seasoning and salt and pepper to taste. Bring to a boil and cook for 5 minutes. Remove from the heat and add the chopped basil.\r\nDrain the pasta and add it to the sauce. Garnish with Parmigiano-Reggiano flakes and more basil and serve warm.</string>
+
 
     <string-array name="waterValues">
         <item>Enter a water amount…</item>
@@ -42,4 +47,5 @@
         <item>AM</item>
         <item>PM</item>
     </string-array>
+
 </resources>

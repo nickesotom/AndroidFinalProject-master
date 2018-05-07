@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.lewisu.cs.nsoto.androidfinalproject">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +23,7 @@
         <activity android:name=".WaterScreenActivity" />
         <activity android:name=".SleepScreenActivity" />
         <activity android:name=".FoodScreenActivity" />
-        <activity android:name=".ChecklistActivity"></activity>
+        <activity android:name=".ChecklistActivity" />
     </application>
 
 </manifest>

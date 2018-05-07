@@ -2,6 +2,7 @@ package edu.lewisu.cs.nsoto.androidfinalproject;
 
 import android.content.DialogInterface;
 //import android.graphics.PorterDuff;
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class WaterScreenActivity extends AppCompatActivity {
 	TextView waterAmount;
 	ProgressBar mProgressBar;
 	Spinner mSpinner;
-
+	Button resetButton;
 	private WaterModel water;
 	private WaterModel DBWater;
 
@@ -36,7 +37,7 @@ public class WaterScreenActivity extends AppCompatActivity {
 
 		water = new WaterModel(0, 64);
 		db.addWater(water);
-
+		resetButton = (Button) findViewById(R.id.reset_button);
 		mAddWater = (Button) findViewById(R.id.fill_water_button);
 		waterAmount = (TextView) findViewById(R.id.water_consumed);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
@@ -50,7 +51,12 @@ public class WaterScreenActivity extends AppCompatActivity {
 		mProgressBar.setProgress((int)DBWater.getCurrentWater());
 		waterAmount.setText(String.valueOf(DBWater.getCurrentWater()) + "/" + String.valueOf(DBWater.getMaxWater()));
 
+		resetButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
 
+			}
+		});
 		mAddWater.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
