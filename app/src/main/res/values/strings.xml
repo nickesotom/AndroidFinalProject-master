@@ -5,6 +5,7 @@
     <string name="food">Food</string>
     <string name="title_activity_water">WaterActivity</string>
     <string name="fill_water">Add Water</string>
+    <string name="reset_water">Reset Water</string>
     <string name="water_tap_text">Water Tap</string>
     <string name="sleep_text">Sleep</string>
     <string name="recipe_view">Time to eat</string>
@@ -39,6 +40,7 @@
         <item>33.8</item>
     </string-array>
     <string-array name="AMPM">
+        <item>AM or PM...</item>
         <item>AM</item>
         <item>PM</item>
     </string-array>
