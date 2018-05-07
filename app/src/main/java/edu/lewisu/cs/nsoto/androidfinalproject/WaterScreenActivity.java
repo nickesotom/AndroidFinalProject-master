@@ -117,8 +117,10 @@ public class WaterScreenActivity extends AppCompatActivity {
 		mResetWater.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick (View v){
-				db.updateWater(water);
+				DBWater.clearWater();
+				db.updateWater(DBWater);
 				waterAmount.setText(String.valueOf(DBWater.getCurrentWater()) + "/" + String.valueOf(DBWater.getMaxWater()));
+				mProgressBar.setProgress(0);
 			}
 		});
 	}

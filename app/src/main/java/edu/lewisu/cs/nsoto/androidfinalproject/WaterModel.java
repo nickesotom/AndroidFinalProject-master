@@ -35,6 +35,7 @@ public class WaterModel {
 
     public void clearWater() {
         currentWater = 0;
+        maxWater = 64;
     }
 
 
