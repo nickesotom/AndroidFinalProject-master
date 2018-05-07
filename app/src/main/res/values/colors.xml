@@ -8,4 +8,5 @@
     <color name="black">#000000</color>
     <color name="waterBlue">#003182</color>
     <color name="waterBackground">#54A4DE</color>
+    <color name="spinnerTextColor">#000000</color>
 </resources>
