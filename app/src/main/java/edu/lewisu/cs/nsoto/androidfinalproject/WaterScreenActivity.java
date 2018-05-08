@@ -1,7 +1,13 @@
 package edu.lewisu.cs.nsoto.androidfinalproject;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
-//import android.graphics.PorterDuff;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,15 +19,24 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class WaterScreenActivity extends AppCompatActivity {
 	Button mAddWater;
+	Button mResetWater;
 	TextView waterAmount;
 	ProgressBar mProgressBar;
 	Spinner mSpinner;
 
-	private WaterModel water;
+	private WaterModel water = new WaterModel(0, 64);;
 	private WaterModel DBWater;
 
+	final DBHandler db = new DBHandler(this);
+
+	SharedPreferences prefs;
+
+	//private PendingIntent pendingIntent;
+	//private AlarmManager manager;
 
 
 	@Override
@@ -29,19 +44,23 @@ public class WaterScreenActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_water_screen);
 
-		final DBHandler db = new DBHandler(this);
+		prefs = getSharedPreferences("edu.lewisu.cs.nsoto.androidfinalproject", MODE_PRIVATE);
 
-		//db.deleteWater();
+		if (prefs.getBoolean("firstrun", true)) {
+			db.addWater(water);
+			//startAlarm();
+			prefs.edit().putBoolean("firstrun", false).commit();
+		}
 
+		/*Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+		pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
 
-		water = new WaterModel(0, 64);
-		db.addWater(water);
+		registerReceiver(broadcastReceiver, new IntentFilter("midnightIntent"));*/
 
 		mAddWater = (Button) findViewById(R.id.fill_water_button);
+		mResetWater = (Button) findViewById(R.id.reset_water_button);
 		waterAmount = (TextView) findViewById(R.id.water_consumed);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
-
-		//mAddWater.getBackground().setColorFilter(0x003182, PorterDuff.Mode.MULTIPLY);
 
 		DBWater = db.getWaterAmount(1);
 
@@ -94,8 +113,34 @@ public class WaterScreenActivity extends AppCompatActivity {
 				dialog.show();
 			}
 		});
+
+		mResetWater.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick (View v){
+				DBWater.clearWater();
+				db.updateWater(DBWater);
+				waterAmount.setText(String.valueOf(DBWater.getCurrentWater()) + "/" + String.valueOf(DBWater.getMaxWater()));
+				mProgressBar.setProgress(0);
+			}
+		});
 	}
 
+	/*public void startAlarm() {
+		manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+
+		manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+	}
+
+	BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			db.updateWater(water);
+		}
+	};*/
 	public void addingWater(DBHandler db) {
 
 		int spinnerPosition = mSpinner.getSelectedItemPosition();
@@ -118,7 +163,5 @@ public class WaterScreenActivity extends AppCompatActivity {
 		if (DBWater.getCurrentWater() > DBWater.getMaxWater()) {
 			Toast.makeText(this, "You've already reached your limit, slow down!", Toast.LENGTH_SHORT).show();
 		}
-
 	}
-
 }
