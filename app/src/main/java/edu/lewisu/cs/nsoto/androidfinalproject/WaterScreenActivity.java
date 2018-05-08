@@ -125,8 +125,6 @@ public class WaterScreenActivity extends AppCompatActivity {
 		});
 	}
 
-
-
 	/*public void startAlarm() {
 		manager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 		Calendar calendar = Calendar.getInstance();
@@ -143,9 +141,6 @@ public class WaterScreenActivity extends AppCompatActivity {
 			db.updateWater(water);
 		}
 	};*/
-
-
-
 	public void addingWater(DBHandler db) {
 
 		int spinnerPosition = mSpinner.getSelectedItemPosition();
@@ -168,8 +163,5 @@ public class WaterScreenActivity extends AppCompatActivity {
 		if (DBWater.getCurrentWater() > DBWater.getMaxWater()) {
 			Toast.makeText(this, "You've already reached your limit, slow down!", Toast.LENGTH_SHORT).show();
 		}
-
 	}
-
-
 }

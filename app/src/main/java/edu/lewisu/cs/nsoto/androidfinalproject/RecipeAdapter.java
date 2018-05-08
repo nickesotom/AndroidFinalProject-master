@@ -19,11 +19,11 @@ import org.w3c.dom.Text;
 
 public class RecipeAdapter extends ArrayAdapter<String> {
 
-	private String[] names;
+	private int[] names;
 	private int[] recipes;
 	private Context mContext;
 
-	public RecipeAdapter(@NonNull Context context, String[] recipeNames, int[] recipePics) {
+	public RecipeAdapter(@NonNull Context context, int[] recipeNames, int[] recipePics) {
 		super(context, R.layout.listview_item);
 		this.names = recipeNames;
 		this.recipes = recipePics;
