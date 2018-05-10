@@ -93,7 +93,8 @@ public class WaterScreenActivity extends AppCompatActivity {
 
 						if (mSpinner.getSelectedItem().toString().equalsIgnoreCase("Enter a water amount...")) {
 							dialog.dismiss();
-						} else {
+						}
+						else {
 							//Toast.makeText(WaterScreenActivity.this, mSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 							addingWater(db);
 							dialog.dismiss();

@@ -15,7 +15,8 @@
         android:debuggable="true"
         <receiver android:name=".AlarmReceiver" />
 
-        <activity android:name=".HomePageActivity">
+        <activity android:name=".HomePageActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

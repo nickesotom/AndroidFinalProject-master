@@ -31,17 +31,6 @@
         android:layout_marginRight="21dp"
         android:text="@string/reset_water" />
 
-    <TextView
-        android:id="@+id/water_tap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/water_tap_text"
-        android:textColor="@color/waterBlue"
-        android:textSize="35sp" />
-
 
     <ProgressBar
         android:layout_width="match_parent"
